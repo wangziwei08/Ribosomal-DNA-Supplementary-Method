@@ -1,0 +1,6 @@
+Representative 45S sequences
+most abundant exact 45S sequence type
+
+genome	chromosome	strand	start	end	length	copy_count
+hap1	chr16_1	+	7889902	7895699	5798	4
+hap2	chr16_2	+	8544433	8550230	5798	5

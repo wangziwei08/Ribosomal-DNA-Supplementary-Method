@@ -1,0 +1,9 @@
+Shared representative 45S sequence
+most abundant exact 45S sequence shared by hap1 and hap2
+
+length	5798
+hap1_count	4
+hap2_count	1
+total_count	5
+hap1_meta	chr16_1	+	7889902	7895699
+hap2_meta	chr8_2	+	10562072	10567869

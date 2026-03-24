@@ -1,0 +1,5 @@
+genome	chromosome	chromosome_length_bp	high_confidence_5S_like_copies	largest_cluster_start	largest_cluster_end	largest_cluster_span_bp	largest_cluster_hits
+hap1	chr2_1	14130241	591	8217777	8232580	14804	29
+hap1	chr12_1	9330097	1687	3786605	3935086	148482	299
+hap2	chr2_2	13418534	1875	4895524	5084405	188882	371
+hap2	chr12_2	9181357	1275	3200442	3442843	242402	486
