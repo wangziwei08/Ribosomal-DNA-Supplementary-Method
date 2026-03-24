@@ -9,12 +9,12 @@ TMP = BASE / "tmp"
 BIN_SIZE = 100_000
 
 PANELS = [
-    ("hap1", "chr6_1", "hap1 chr6", 17739215),
-    ("hap1", "chr8_1", "hap1 chr8", 17269009),
-    ("hap1", "chr16_1", "hap1 chr16", 17664751),
-    ("hap2", "chr6_2", "hap2 chr6", 17642119),
-    ("hap2", "chr8_2", "hap2 chr8", 17161392),
-    ("hap2", "chr16_2", "hap2 chr16", 17569814),
+    ("hap1", "chr6_1", "Hap1 chr6", 17739215),
+    ("hap1", "chr8_1", "Hap1 chr8", 17269009),
+    ("hap1", "chr16_1", "Hap1 chr16", 17664751),
+    ("hap2", "chr6_2", "Hap2 chr6", 17642119),
+    ("hap2", "chr8_2", "Hap2 chr8", 17161392),
+    ("hap2", "chr16_2", "Hap2 chr16", 17569814),
 ]
 
 
@@ -47,7 +47,7 @@ def build_bins(units: list[tuple[int, int]], chrom_len: int, bin_size: int = BIN
 def render_svg(out: Path, panel_data: dict[tuple[str, str], list[tuple[int, int]]] | None = None) -> None:
     panel_data = panel_data or load_units()
     width = 1750
-    height = 1500
+    height = 1520
     left = 190
     right = 95
     track_w = width - left - right
@@ -62,12 +62,9 @@ def render_svg(out: Path, panel_data: dict[tuple[str, str], list[tuple[int, int]
     svg.append(
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">'
     )
-    svg.append('<rect width="100%" height="100%" fill="#f7f1e3"/>')
+    svg.append('<rect width="100%" height="100%" fill="#ffffff"/>')
     svg.append(
-        '<text x="70" y="55" font-size="30" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">45S (18S-5.8S-26S) distribution on chr16, chr8 and chr6</text>'
-    )
-    svg.append(
-        '<text x="70" y="84" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#405059">Bars show the number of complete 45S units per 0.1 Mb window. Red ticks mark individual complete 45S units.</text>'
+        '<text x="70" y="55" font-size="28" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">45S (18S-5.8S-26S) distribution on chr6, chr8 and chr16</text>'
     )
 
     for i, (genome, chrom, title, chrom_len) in enumerate(PANELS):
@@ -83,13 +80,13 @@ def render_svg(out: Path, panel_data: dict[tuple[str, str], list[tuple[int, int]
             f'<text x="70" y="{panel_top + 4}" font-size="23" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">{title}</text>'
         )
         svg.append(
-            f'<text x="70" y="{panel_top + 24}" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: {chrom_len/1_000_000:.2f} Mb | complete 45S units: {len(units)}</text>'
+            f'<text x="70" y="{panel_top + 24}" font-size="16" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: {chrom_len/1_000_000:.2f} Mb | complete 45S units: {len(units)}</text>'
         )
 
         for tick in (0, 5, 10):
             y = density_base - (tick / axis_max) * density_h
             svg.append(
-                f'<line x1="{left}" y1="{y:.2f}" x2="{left + track_w}" y2="{y:.2f}" stroke="#ddd7c8" stroke-width="1"/>'
+                f'<line x1="{left}" y1="{y:.2f}" x2="{left + track_w}" y2="{y:.2f}" stroke="#d5d9d6" stroke-width="1"/>'
             )
             svg.append(
                 f'<text x="{left - 12}" y="{y + 4:.2f}" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">{tick}</text>'
@@ -106,13 +103,13 @@ def render_svg(out: Path, panel_data: dict[tuple[str, str], list[tuple[int, int]
             )
 
         svg.append(
-            f'<rect x="{left}" y="{chrom_y}" width="{actual_w:.2f}" height="{chrom_bar_h}" rx="9" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.3"/>'
+            f'<rect x="{left}" y="{chrom_y}" width="{actual_w:.2f}" height="{chrom_bar_h}" rx="9" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>'
         )
 
         for start, end in units:
             x = left + (((start + end) / 2) / chrom_len) * actual_w
             svg.append(
-                f'<line x1="{x:.2f}" y1="{chrom_y - 7}" x2="{x:.2f}" y2="{chrom_y + chrom_bar_h + 7}" stroke="#cf5c36" stroke-width="1.1" stroke-opacity="0.9"/>'
+                f'<line x1="{x:.2f}" y1="{chrom_y - 7}" x2="{x:.2f}" y2="{chrom_y + chrom_bar_h + 7}" stroke="#cf5c36" stroke-width="1.2" stroke-opacity="0.9"/>'
             )
 
         for pos in range(0, chrom_len + 1_000_000, 1_000_000):
@@ -129,18 +126,18 @@ def render_svg(out: Path, panel_data: dict[tuple[str, str], list[tuple[int, int]
             f'<text x="{left + actual_w + 8:.2f}" y="{chrom_y + 13}" font-size="11.5" font-family="Helvetica, Arial, sans-serif" fill="#405059">{chrom_len/1_000_000:.2f} Mb</text>'
         )
 
-    legend_y = height - 90
+    legend_y = height - 52
     svg.append(
         f'<rect x="85" y="{legend_y - 18}" width="28" height="18" fill="#3a86b8" fill-opacity="0.82"/>'
     )
     svg.append(
-        f'<text x="125" y="{legend_y - 4}" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.1 Mb density bins</text>'
+        f'<text x="125" y="{legend_y - 4}" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.1 Mb density bins</text>'
     )
     svg.append(
-        f'<line x1="300" y1="{legend_y - 18}" x2="300" y2="{legend_y}" stroke="#cf5c36" stroke-width="1.5"/>'
+        f'<line x1="300" y1="{legend_y - 18}" x2="300" y2="{legend_y}" stroke="#cf5c36" stroke-width="1.2"/>'
     )
     svg.append(
-        f'<text x="315" y="{legend_y - 4}" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">complete 45S units</text>'
+        f'<text x="315" y="{legend_y - 4}" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">complete 45S units</text>'
     )
     svg.append("</svg>")
     out.write_text("\n".join(svg), encoding="utf-8")

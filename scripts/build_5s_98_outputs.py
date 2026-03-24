@@ -18,10 +18,10 @@ CHROM_LENGTHS = {
 }
 
 PANELS = [
-    ("hap1", "chr2_1", "hap1 chr2"),
-    ("hap1", "chr12_1", "hap1 chr12"),
-    ("hap2", "chr2_2", "hap2 chr2"),
-    ("hap2", "chr12_2", "hap2 chr12"),
+    ("hap1", "chr2_1", "Hap1 chr2"),
+    ("hap1", "chr12_1", "Hap1 chr12"),
+    ("hap2", "chr2_2", "Hap2 chr2"),
+    ("hap2", "chr12_2", "Hap2 chr12"),
 ]
 
 
@@ -171,14 +171,10 @@ def render_svg(
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}">'
     )
-    svg.append('<rect width="100%" height="100%" fill="#f7f1e3"/>')
+    svg.append('<rect width="100%" height="100%" fill="#ffffff"/>')
     svg.append(
-        '<text x="70" y="58" font-size="30" font-family="Helvetica, Arial, sans-serif" '
+        '<text x="70" y="58" font-size="28" font-family="Helvetica, Arial, sans-serif" '
         'font-weight="700" fill="#1e2a2f">High-confidence 5S-like loci on chr2 and chr12</text>'
-    )
-    svg.append(
-        '<text x="70" y="88" font-size="15" font-family="Helvetica, Arial, sans-serif" '
-        'fill="#405059">Query: shared_most_common_5S.fa | Threshold: identity >= 98%, query coverage = 100%</text>'
     )
 
     for i, (genome, chrom, title) in enumerate(PANELS):
@@ -196,7 +192,7 @@ def render_svg(
             f'font-weight="700" fill="#1e2a2f">{title}</text>'
         )
         svg.append(
-            f'<text x="70" y="{panel_top + 16}" font-size="15" font-family="Helvetica, Arial, sans-serif" '
+            f'<text x="70" y="{panel_top + 16}" font-size="17" font-family="Helvetica, Arial, sans-serif" '
             f'fill="#56666d">chromosome length: {chrom_len/1_000_000:.2f} Mb | hits: {len(panel_hits)} | max per 0.25 Mb bin: {max_bin}</text>'
         )
         for tick in (0, 100, 200, 300, 400, 500):
@@ -217,7 +213,7 @@ def render_svg(
                 f'<rect class="density-bar" x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" fill="#3a86b8" fill-opacity="0.80"/>'
             )
         svg.append(
-            f'<rect x="{left}" y="{bar_y}" width="{bar_w}" height="{bar_h}" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.5"/>'
+        f'<rect x="{left}" y="{bar_y}" width="{bar_w}" height="{bar_h}" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>'
         )
         for start, end, count in clusters[genome].get(chrom, []):
             if count < 20:
@@ -236,18 +232,18 @@ def render_svg(
             svg.append(
                 f'<text x="{x:.2f}" y="{axis_y + 10}" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">{int(round(pos/1_000_000))} Mb</text>'
             )
-    legend_y = height - 96
+    legend_y = height - 72
     svg.append(
         f'<rect x="90" y="{legend_y - 20}" width="30" height="18" class="density-bar" fill="#3a86b8" fill-opacity="0.80"/>'
     )
     svg.append(
-        f'<text x="134" y="{legend_y - 6}" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.25 Mb density bins</text>'
+        f'<text x="134" y="{legend_y - 6}" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.25 Mb density bins</text>'
     )
     svg.append(
         f'<rect x="330" y="{legend_y - 22}" width="30" height="22" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="1"/>'
     )
     svg.append(
-        f'<text x="374" y="{legend_y - 6}" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">1 kb clusters with at least 20 hits</text>'
+        f'<text x="374" y="{legend_y - 6}" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">1 kb clusters with at least 20 hits</text>'
     )
     svg.append("</svg>")
 

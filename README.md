@@ -1,154 +1,163 @@
 # Supplementary Computational Methods for 5S and 45S rDNA Analyses
 
-## Overview
+This repository contains the scripts, result tables, representative sequences, and figure files used to summarize 5S and 45S rDNA features in two haplotype-resolved assemblies (`hap1` and `hap2`).
 
-This document summarizes the computational workflow used to characterize 5S and 45S ribosomal DNA (rDNA) in the two haplotype-resolved assemblies (`hap1` and `hap2`). The workflow combines covariance model-based ncRNA annotation, BLAST-based sequence profiling, rule-based identification of complete 45S units, and custom plotting scripts used to generate the summary figures included in this repository.
+The repository is organized so that the content can be rerun locally if the same assembly FASTA files and annotation inputs are available.
 
-All analyses were performed in the directory `/home/dell/disk2_16T/fojia/Rfam`, and all derived intermediate and final output files described below were written to the local `tmp/` directory.
+## Repository layout
 
-## 1. 5S rDNA analysis
+- `methods/`
+  - Supplementary methods text for the 5S and 45S analyses.
+- `scripts/`
+  - Python scripts used to extract loci, summarize counts, and draw figures.
+- `tests/`
+  - Small `pytest` tests for key parsing and plotting logic.
+- `figures/`
+  - Final figure files in `svg` and `png` format.
+- `tables/`
+  - Summary tables and detailed text summaries.
+- `sequences/`
+  - Representative 5S and 45S FASTA sequences used or extracted in the analysis.
 
-### 1.1 Identification of the representative 5S query sequence
+## External input files required for rerunning
 
-Initial ncRNA annotation was performed with Infernal using Rfam covariance models. From the high-confidence 5S rRNA annotations, we identified the most abundant completely identical 5S sequence that was shared between `hap1` and `hap2`. This shared dominant sequence was saved as:
+The following large input files were used locally but are not included in this repository:
 
-- `shared_most_common_5S.fa`
-
-This sequence is 119 bp long and was used as the representative 5S query for downstream genome-wide sequence profiling.
-
-### 1.2 Genome-wide 5S profiling
-
-The representative 5S query was searched against the haplotype assemblies with local BLASTN. For the main analysis, hits were retained only when they satisfied both of the following criteria:
-
-- sequence identity `>= 98%`
-- query coverage `= 100%`
-
-These filtered matches were treated as high-confidence 5S-like loci. Although the query was searched against the whole assemblies, the majority of retained loci were concentrated on:
-
-- `hap1`: `chr2_1` and `chr12_1`
-- `hap2`: `chr2_2` and `chr12_2`
-
-The final high-confidence copy numbers were:
-
-- `hap1 chr2_1`: 591
-- `hap1 chr12_1`: 1,687
-- `hap2 chr2_2`: 1,875
-- `hap2 chr12_2`: 1,275
-
-### 1.3 5S clustering and plotting
-
-High-confidence 5S hits were further grouped into local clusters by merging neighboring hits separated by `<= 1 kb`. For figure generation, hit density was summarized in fixed `0.25 Mb` windows, and chromosome coordinates were displayed with `1 Mb` tick marks.
-
-The main scripts used for the 5S analysis were:
-
-- `tmp/build_5s_98_outputs.py`
-- `tmp/test_build_5s_98_outputs.py`
-
-The main output files were:
-
-- `tmp/main_table_5S_98id100cov.tsv`
-- `tmp/figure_5S_98id100cov_chr2_chr12.svg`
-- `tmp/figure_5S_98id100cov_chr2_chr12.png`
-- `tmp/scientific_data_methods_results_5S_98id100cov.md`
-
-## 2. 45S rDNA analysis
-
-### 2.1 Annotation source and interpretation of LSU labels
-
-Large-subunit and small-subunit rRNA annotations were obtained from barrnap output:
-
+- `fojia.hap1.filtered.fa`
+- `fojia.hap2.filtered.fa`
+- `hap1.rfam.gff`
+- `hap2.rfam.gff`
 - `hap1.rRNA.gff`
 - `hap2.rRNA.gff`
+- `tmp/hap1_vs_shared_5S.blast.tsv`
+- `tmp/hap2_vs_shared_5S.blast.tsv`
 
-In these barrnap annotations, the large-subunit rRNA feature is reported as `28S_rRNA`. For the present dicot genome analysis, this feature was treated as the 26S-equivalent large-subunit annotation when defining complete 45S units.
+These files contain the haplotype assemblies, the Infernal/Rfam-based ncRNA annotation results, the barrnap rRNA annotation results, and the BLAST tabular outputs used by the summary scripts.
 
-### 2.2 Rule-based detection of complete 45S units
+## Software used
 
-Complete 45S units were identified with a custom rule-based parser. A locus was counted as one complete 45S unit when all of the following conditions were met:
+The analyses in this repository depend on the following software:
 
-- the annotations `18S_rRNA`, `5_8S_rRNA`, and `28S_rRNA` occurred on the same sequence
-- all three annotations were on the same strand
-- the three annotations were contained within a local span of `<= 10 kb`
-- the 5.8S annotation was positioned between the 18S and large-subunit annotations
-- overlap between the annotated 5.8S and the large-subunit boundary was allowed, because this pattern occurs in barrnap output
+- Infernal / `cmscan` for Rfam-based ncRNA annotation of 5S candidates
+- Rfam covariance model database
+- BLAST+ for sequence similarity searches
+  - verified local version used for downstream filtering: `blastn 2.5.0+`
+- barrnap for rRNA annotation of 18S, 5.8S, and 28S features
+- Python for custom parsing and plotting
+  - verified local version: `Python 3.9.21`
+- `pytest` for lightweight script verification
+  - verified local version: `pytest 8.4.2`
+- `rsvg-convert` for converting `svg` figures to `png`
 
-This implementation allowed both forward and reverse strand configurations, provided that the three component annotations remained co-oriented on the same strand.
+The retained annotation files clearly record that Infernal/Rfam annotation was performed with `cmscan` and that rRNA features were derived from barrnap output. However, the exact executable versions of `cmscan` and barrnap were not embedded in the retained local result files and are therefore not claimed here.
 
-### 2.3 Chromosomal distribution of complete 45S units
+## Analysis summary
 
-Complete 45S units were found on multiple sequences, but the major chromosome-level arrays were concentrated on:
+### 1. 5S rDNA
 
-- `hap1`: `chr6_1`, `chr8_1`, and `chr16_1`
-- `hap2`: `chr6_2`, `chr8_2`, and `chr16_2`
+The 5S analysis used the most abundant completely identical 5S sequence shared by `hap1` and `hap2` as the representative query:
 
-The corresponding unit counts on these chromosomes were:
+- `sequences/shared_most_common_5S.fa`
 
-- `hap1 chr6_1`: 46
-- `hap1 chr8_1`: 47
-- `hap1 chr16_1`: 50
-- `hap2 chr6_2`: 48
-- `hap2 chr8_2`: 50
-- `hap2 chr16_2`: 69
+This 119-bp sequence was searched against the haplotype assemblies with BLASTN. Hits were retained only when:
 
-For visualization, complete 45S units were summarized in `0.1 Mb` windows. The plotting script used a shared chromosome-length scale across all displayed panels so that chromosome bar lengths remained proportional to their actual lengths.
+- sequence identity was `>= 98%`
+- query coverage was `100%`
 
-The main scripts used for the 45S analysis were:
+The retained high-confidence 5S-like loci were summarized and plotted for the chromosomes with the dominant signals (`chr2` and `chr12` in both haplotypes).
 
-- `tmp/find_45s_units.py`
-- `tmp/test_find_45s_units.py`
-- `tmp/plot_45s_chr6_8_16.py`
-- `tmp/test_plot_45s_chr6_8_16.py`
+Main outputs:
 
-The main output files were:
+- `tables/main_table_5S_98id100cov.tsv`
+- `figures/figure_5S_98id100cov_chr2_chr12.svg`
+- `figures/figure_5S_98id100cov_chr2_chr12.png`
 
-- `tmp/hap1_45S_units.tsv`
-- `tmp/hap2_45S_units.tsv`
-- `tmp/hap1_45S_summary.tsv`
-- `tmp/hap2_45S_summary.tsv`
-- `tmp/45S_summary.txt`
-- `tmp/figure_45S_chr16_chr8_chr6.svg`
-- `tmp/figure_45S_chr16_chr8_chr6.png`
+### 2. 45S rDNA
 
-## 3. Representative 45S sequences
+Complete 45S units were defined from barrnap-derived annotations by requiring co-oriented `18S_rRNA`, `5_8S_rRNA`, and `28S_rRNA` features on the same sequence within a 10-kb span. In this dicot analysis, the barrnap `28S_rRNA` feature was treated as the 26S-equivalent LSU annotation.
 
-Representative complete 45S sequences were extracted from the major chromosome-level arrays (`chr6`, `chr8`, and `chr16`) in each haplotype. Exact full-length sequence types were counted after strand normalization, and the most abundant exact 45S sequence in each haplotype was exported as a representative sequence.
+Major chromosome-level 45S arrays were summarized on `chr6`, `chr8`, and `chr16` in both haplotypes.
 
-The script used for this step was:
+Main outputs:
 
-- `tmp/extract_representative_45s.py`
+- `tables/hap1_45S_units.tsv`
+- `tables/hap2_45S_units.tsv`
+- `tables/hap1_45S_summary.tsv`
+- `tables/hap2_45S_summary.tsv`
+- `tables/45S_summary.txt`
+- `figures/figure_45S_chr16_chr8_chr6.svg`
+- `figures/figure_45S_chr16_chr8_chr6.png`
 
-Outputs:
+### 3. Representative 45S sequences
 
-- `tmp/representative_45S.fa`
-- `tmp/representative_45S_summary.txt`
-
-We also identified the most abundant exact 45S sequence shared by both haplotypes across these major chromosome-level arrays.
-
-The script used for the shared representative sequence was:
-
-- `tmp/extract_shared_representative_45s.py`
+Representative exact 45S sequence types were extracted from the major chromosome-level arrays, together with the dominant exact 45S type shared by both haplotypes.
 
 Outputs:
 
-- `tmp/shared_representative_45S.fa`
-- `tmp/shared_representative_45S_summary.txt`
+- `sequences/representative_45S.fa`
+- `tables/representative_45S_summary.txt`
+- `sequences/shared_representative_45S.fa`
+- `tables/shared_representative_45S_summary.txt`
 
-## 4. Testing and verification
+## Scripts included
 
-Small unit-style tests were written for the custom parsing and plotting scripts to verify critical behaviors, including:
+- `scripts/build_5s_98_outputs.py`
+  - Filters BLAST hits at `identity >= 98%` and `coverage = 100%`, summarizes 5S loci, and renders the main 5S figure.
+- `scripts/find_45s_units.py`
+  - Parses barrnap GFF files and detects complete 45S units using fixed structural rules.
+- `scripts/plot_45s_chr6_8_16.py`
+  - Draws the chromosome-scale 45S distribution figure.
+- `scripts/extract_representative_45s.py`
+  - Extracts the dominant exact 45S type in each haplotype.
+- `scripts/extract_shared_representative_45s.py`
+  - Extracts the dominant exact 45S type shared by both haplotypes.
 
-- midpoint-based bin assignment
-- strand-aware sequence extraction
-- exact shared-sequence selection
-- fixed y-axis labels used in the figures
-- compatibility of complete 45S detection with barrnap-style overlapping 5.8S/LSU boundaries
+## Example commands for reproducing the repository outputs
 
-The corresponding test files are:
+The commands below assume the repository root is the working directory and that the required external input files are available at the paths expected by the scripts.
 
-- `tmp/test_build_5s_98_outputs.py`
-- `tmp/test_find_45s_units.py`
-- `tmp/test_plot_45s_chr6_8_16.py`
-- `tmp/test_extract_representative_45s.py`
-- `tmp/test_extract_shared_representative_45s.py`
+### Rebuild 5S summary outputs
 
-At the time of generation, all local tests for these scripts passed successfully.
+```bash
+python scripts/build_5s_98_outputs.py
+rsvg-convert figures/figure_5S_98id100cov_chr2_chr12.svg \
+  -o figures/figure_5S_98id100cov_chr2_chr12.png
+```
+
+### Recompute 45S units and summaries
+
+```bash
+python scripts/find_45s_units.py
+python scripts/plot_45s_chr6_8_16.py
+rsvg-convert figures/figure_45S_chr16_chr8_chr6.svg \
+  -o figures/figure_45S_chr16_chr8_chr6.png
+```
+
+### Re-extract representative 45S sequences
+
+```bash
+python scripts/extract_representative_45s.py
+python scripts/extract_shared_representative_45s.py
+```
+
+### Run included tests
+
+```bash
+pytest -q tests/test_build_5s_98_outputs.py \
+  tests/test_find_45s_units.py \
+  tests/test_plot_45s_chr6_8_16.py \
+  tests/test_extract_representative_45s.py \
+  tests/test_extract_shared_representative_45s.py
+```
+
+## Notes on paths
+
+The current scripts were written from the original local analysis workspace and therefore use absolute local base paths internally. If the repository is rerun in a different environment, the `BASE` and `TMP` path definitions at the top of each script should be adjusted to match the local directory layout.
+
+## Methods text
+
+The repository also includes a prose supplementary methods file:
+
+- `methods/github_supplementary_5S_45S_methods.md`
+
+This file is intended for manuscript or repository documentation, whereas the scripts and tables are the executable and derived components used to regenerate the summarized results.

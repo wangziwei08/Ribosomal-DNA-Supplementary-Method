@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1220" viewBox="0 0 1700 1220">
-<rect width="100%" height="100%" fill="#f7f1e3"/>
-<text x="70" y="58" font-size="30" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">High-confidence 5S-like loci on chr2 and chr12</text>
-<text x="70" y="88" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#405059">Query: shared_most_common_5S.fa | Threshold: identity >= 98%, query coverage = 100%</text>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="70" y="58" font-size="28" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">High-confidence 5S-like loci on chr2 and chr12</text>
 <text x="70" y="123" font-size="24" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">hap1 chr2</text>
-<text x="70" y="141" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 14.13 Mb | hits: 591 | max per 0.25 Mb bin: 187</text>
+<text x="70" y="141" font-size="17" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 14.13 Mb | hits: 591 | max per 0.25 Mb bin: 187</text>
 <line x1="185" y1="243.00" x2="1605" y2="243.00" stroke="#d5d9d6" stroke-width="1"/>
 <text x="173" y="247.00" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">0</text>
 <line x1="185" y1="231.40" x2="1605" y2="231.40" stroke="#d5d9d6" stroke-width="1"/>
@@ -73,7 +72,7 @@
 <rect class="density-bar" x="1541.66" y="243.00" width="24.32" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1566.79" y="243.00" width="24.32" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1591.91" y="243.00" width="12.29" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
-<rect x="185" y="261" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.5"/>
+<rect x="185" y="261" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>
 <rect x="995.89" y="254" width="3.00" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="1010.83" y="254" width="3.00" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <line x1="185.00" y1="287" x2="185.00" y2="295" stroke="#7d8b8a" stroke-width="1"/>
@@ -109,7 +108,7 @@
 <line x1="1605.00" y1="287" x2="1605.00" y2="295" stroke="#7d8b8a" stroke-width="1"/>
 <text x="1605.00" y="311" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">14 Mb</text>
 <text x="70" y="383" font-size="24" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">hap1 chr12</text>
-<text x="70" y="401" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 9.33 Mb | hits: 1687 | max per 0.25 Mb bin: 458</text>
+<text x="70" y="401" font-size="17" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 9.33 Mb | hits: 1687 | max per 0.25 Mb bin: 458</text>
 <line x1="185" y1="503.00" x2="1605" y2="503.00" stroke="#d5d9d6" stroke-width="1"/>
 <text x="173" y="507.00" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">0</text>
 <line x1="185" y1="491.40" x2="1605" y2="491.40" stroke="#d5d9d6" stroke-width="1"/>
@@ -160,7 +159,7 @@
 <rect class="density-bar" x="1516.71" y="503.00" width="37.25" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1554.76" y="503.00" width="37.25" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1592.81" y="503.00" width="11.39" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
-<rect x="185" y="521" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.5"/>
+<rect x="185" y="521" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>
 <rect x="660.05" y="514" width="6.45" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="670.16" y="514" width="6.00" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="676.36" y="514" width="7.90" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
@@ -196,7 +195,7 @@
 <line x1="1605.00" y1="547" x2="1605.00" y2="555" stroke="#7d8b8a" stroke-width="1"/>
 <text x="1605.00" y="571" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">9 Mb</text>
 <text x="70" y="643" font-size="24" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">hap2 chr2</text>
-<text x="70" y="661" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 13.42 Mb | hits: 1875 | max per 0.25 Mb bin: 408</text>
+<text x="70" y="661" font-size="17" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 13.42 Mb | hits: 1875 | max per 0.25 Mb bin: 408</text>
 <line x1="185" y1="763.00" x2="1605" y2="763.00" stroke="#d5d9d6" stroke-width="1"/>
 <text x="173" y="767.00" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">0</text>
 <line x1="185" y1="751.40" x2="1605" y2="751.40" stroke="#d5d9d6" stroke-width="1"/>
@@ -263,7 +262,7 @@
 <rect class="density-bar" x="1534.25" y="763.00" width="25.66" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1560.71" y="763.00" width="25.66" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1587.17" y="763.00" width="17.03" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
-<rect x="185" y="781" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.5"/>
+<rect x="185" y="781" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>
 <rect x="693.99" y="774" width="6.08" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="703.06" y="774" width="19.99" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="723.19" y="774" width="3.00" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
@@ -311,7 +310,7 @@
 <line x1="1605.00" y1="807" x2="1605.00" y2="815" stroke="#7d8b8a" stroke-width="1"/>
 <text x="1605.00" y="831" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">13 Mb</text>
 <text x="70" y="903" font-size="24" font-family="Helvetica, Arial, sans-serif" font-weight="700" fill="#1e2a2f">hap2 chr12</text>
-<text x="70" y="921" font-size="15" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 9.18 Mb | hits: 1275 | max per 0.25 Mb bin: 494</text>
+<text x="70" y="921" font-size="17" font-family="Helvetica, Arial, sans-serif" fill="#56666d">chromosome length: 9.18 Mb | hits: 1275 | max per 0.25 Mb bin: 494</text>
 <line x1="185" y1="1023.00" x2="1605" y2="1023.00" stroke="#d5d9d6" stroke-width="1"/>
 <text x="173" y="1027.00" text-anchor="end" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">0</text>
 <line x1="185" y1="1011.40" x2="1605" y2="1011.40" stroke="#d5d9d6" stroke-width="1"/>
@@ -361,7 +360,7 @@
 <rect class="density-bar" x="1499.62" y="1023.00" width="37.87" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1538.29" y="1023.00" width="37.87" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
 <rect class="density-bar" x="1576.95" y="1023.00" width="27.25" height="0.00" fill="#3a86b8" fill-opacity="0.80"/>
-<rect x="185" y="1041" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.5"/>
+<rect x="185" y="1041" width="1420" height="20" rx="10" fill="#d8dfdc" stroke="#7d8b8a" stroke-width="1.2"/>
 <rect x="656.91" y="1034" width="3.00" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="662.47" y="1034" width="15.03" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
 <rect x="679.98" y="1034" width="37.49" height="34" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="0.8"/>
@@ -389,8 +388,8 @@
 <text x="1576.95" y="1091" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">9 Mb</text>
 <line x1="1605.00" y1="1067" x2="1605.00" y2="1075" stroke="#7d8b8a" stroke-width="1"/>
 <text x="1605.00" y="1091" text-anchor="middle" font-size="12" font-family="Helvetica, Arial, sans-serif" fill="#405059">9 Mb</text>
-<rect x="90" y="1104" width="30" height="18" class="density-bar" fill="#3a86b8" fill-opacity="0.80"/>
-<text x="134" y="1118" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.25 Mb density bins</text>
-<rect x="330" y="1102" width="30" height="22" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="1"/>
-<text x="374" y="1118" font-size="14" font-family="Helvetica, Arial, sans-serif" fill="#405059">1 kb clusters with at least 20 hits</text>
+<rect x="90" y="1128" width="30" height="18" class="density-bar" fill="#3a86b8" fill-opacity="0.80"/>
+<text x="134" y="1142" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">0.25 Mb density bins</text>
+<rect x="330" y="1126" width="30" height="22" rx="4" fill="#cf5c36" fill-opacity="0.68" stroke="#8b2e16" stroke-width="1"/>
+<text x="374" y="1142" font-size="19" font-family="Helvetica, Arial, sans-serif" fill="#405059">1 kb clusters with at least 20 hits</text>
 </svg>
